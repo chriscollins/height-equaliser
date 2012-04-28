@@ -31,8 +31,6 @@ Usage
 
 * `adjustProperty` `{string}` A CSS property.  The CSS property that will be adjusted on `adjustSelector` to equalise heights.  Typically one of the following values: `height, marginTop, marginBottom, paddingTop, paddingBottom, borderTopWidth, borderBottomWidth`.
 
-------------------------------------
-
 Example
 -------
 
