@@ -1,8 +1,6 @@
 /**
  * Javascript for equalising heights of containers.
  *
- * (c) 2012 Chris Collins.
- *
  * Requires jQuery (tested with v1.7.2).
  *
  * Documentation and usage available at https://github.com/chriscollins/height-equaliser
@@ -49,8 +47,6 @@
                             measureHeight = getIntegerValueFromCssProperty($(this).css('height'));
                             maxHeight = Math.max(measureHeight, maxHeight);
                         });
-                    } else {
-                        //console.log('Measure container "' + target.measureSelector + '" was not found.');
                     }
                 });
                 //console.log('Maximum height is "' + maxHeight + 'px.');

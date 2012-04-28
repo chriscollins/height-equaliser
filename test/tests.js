@@ -2,7 +2,9 @@
  * QUnit tests for heightEqualiser.js
  */
 
-/*global test, module, $*/
+/*global test, module, ok, $*/
+
+'use strict';
 
 module('Main');
 test('Padding is applied to adjustSelector to equalise heights', function () {
@@ -19,16 +21,16 @@ test('Padding is applied to adjustSelector to equalise heights', function () {
 
     $('#test-content').heightEqualiser({
         "targets": [
-           {
-               "measureSelector": '#main .column1',
-               "adjustSelector": '#main .column1 ul.items .last',
-               "adjustProperty": 'paddingBottom'
-           },
-           {
-               "measureSelector": '#main .column2',
-               "adjustSelector": '#main .column2 .title',
-               "adjustProperty": 'paddingBottom'
-           }
+            {
+                "measureSelector": '#main .column1',
+                "adjustSelector": '#main .column1 ul.items .last',
+                "adjustProperty": 'paddingBottom'
+            },
+            {
+                "measureSelector": '#main .column2',
+                "adjustSelector": '#main .column2 .title',
+                "adjustProperty": 'paddingBottom'
+            }
         ]
     });
 
@@ -54,16 +56,16 @@ test('Initial values of padding are respected', function () {
 
     $('#test-content').heightEqualiser({
         "targets": [
-           {
-               "measureSelector": '#with-initial-padding .column1',
-               "adjustSelector": '#with-initial-padding .column1 ul.items .last',
-               "adjustProperty": 'paddingBottom'
-           },
-           {
-               "measureSelector": '#with-initial-padding .column2',
-               "adjustSelector": '#with-initial-padding .column2 .title',
-               "adjustProperty": 'paddingBottom'
-           }
+            {
+                "measureSelector": '#with-initial-padding .column1',
+                "adjustSelector": '#with-initial-padding .column1 ul.items .last',
+                "adjustProperty": 'paddingBottom'
+            },
+            {
+                "measureSelector": '#with-initial-padding .column2',
+                "adjustSelector": '#with-initial-padding .column2 .title',
+                "adjustProperty": 'paddingBottom'
+            }
         ]
     });
 
@@ -91,16 +93,16 @@ test('Changing the adjust property changes the CSS property that is applied', fu
 
     $('#test-content').heightEqualiser({
         "targets": [
-           {
-               "measureSelector": '#border-test .column1',
-               "adjustSelector": '#border-test .column1 ul.items .last',
-               "adjustProperty": 'borderBottomWidth'
-           },
-           {
-               "measureSelector": '#border-test .column2',
-               "adjustSelector": '#border-test .column2 .title',
-               "adjustProperty": 'borderBottomWidth'
-           }
+            {
+                "measureSelector": '#border-test .column1',
+                "adjustSelector": '#border-test .column1 ul.items .last',
+                "adjustProperty": 'borderBottomWidth'
+            },
+            {
+                "measureSelector": '#border-test .column2',
+                "adjustSelector": '#border-test .column2 .title',
+                "adjustProperty": 'borderBottomWidth'
+            }
         ]
     });
 
@@ -120,16 +122,16 @@ module('Error handling');
 test('Error is not thrown if a measureSelector does not exist', function () {
     $('#test-content').heightEqualiser({
         "targets": [
-           {
-               "measureSelector": '#main .column1',
-               "adjustSelector": '#main .column1 ul.items .last',
-               "adjustProperty": 'paddingBottom'
-           },
-           {
-               "measureSelector": '#element-does-not-exist .column2',
-               "adjustSelector": '#main .column2 .title',
-               "adjustProperty": 'paddingBottom'
-           }
+            {
+                "measureSelector": '#main .column1',
+                "adjustSelector": '#main .column1 ul.items .last',
+                "adjustProperty": 'paddingBottom'
+            },
+            {
+                "measureSelector": '#element-does-not-exist .column2',
+                "adjustSelector": '#main .column2 .title',
+                "adjustProperty": 'paddingBottom'
+            }
         ]
     });
 
@@ -139,16 +141,16 @@ test('Error is not thrown if a measureSelector does not exist', function () {
 test('Error is not thrown if an adjustSelector does not exist', function () {
     $('#test-content').heightEqualiser({
         "targets": [
-           {
-               "measureSelector": '#main .column1',
-               "adjustSelector": '#element-does-not-exist .column1 ul.items .last',
-               "adjustProperty": 'paddingBottom'
-           },
-           {
-               "measureSelector": '#main .column2',
-               "adjustSelector": '#element-does-not-exist .column2 .title',
-               "adjustProperty": 'paddingBottom'
-           }
+            {
+                "measureSelector": '#main .column1',
+                "adjustSelector": '#element-does-not-exist .column1 ul.items .last',
+                "adjustProperty": 'paddingBottom'
+            },
+            {
+                "measureSelector": '#main .column2',
+                "adjustSelector": '#element-does-not-exist .column2 .title',
+                "adjustProperty": 'paddingBottom'
+            }
         ]
     });
 
@@ -171,14 +173,14 @@ test('defaultAdjustProperty is used if not specified', function () {
 
     $('#test-content').heightEqualiser({
         "targets": [
-           {
-               "measureSelector": '#default-adjust-property-test .column1',
-               "adjustSelector": '#default-adjust-property-test .column1 ul.items .last'
-           },
-           {
-               "measureSelector": '#default-adjust-property-test .column2',
-               "adjustSelector": '#default-adjust-property-test .column2 .title'
-           }
+            {
+                "measureSelector": '#default-adjust-property-test .column1',
+                "adjustSelector": '#default-adjust-property-test .column1 ul.items .last'
+            },
+            {
+                "measureSelector": '#default-adjust-property-test .column2',
+                "adjustSelector": '#default-adjust-property-test .column2 .title'
+            }
         ]
     });
 

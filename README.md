@@ -3,8 +3,6 @@ Height Equaliser
 
 Javascript for equalising heights of multiple containers.
 
-(c) 2012 Chris Collins.
-
 [https://github.com/chriscollins/height-equaliser](https://github.com/chriscollins/height-equaliser)
 
 Requires [jQuery](http://jquery.com) (tested with v1.7.2).
@@ -18,12 +16,12 @@ Usage
 
     {
       "targets": [
-           {
-               "measureSelector": '.jquery-selector-of-an-item-to-measure',
-               "adjustSelector": '.jquery-selector-of-an-item-to-adjust',
-               "adjustProperty": 'Javascript CSS property'
-           },
-           // More target specifications...
+            {
+                "measureSelector": '.jquery-selector-of-an-item-to-measure',
+                "adjustSelector": '.jquery-selector-of-an-item-to-adjust',
+                "adjustProperty": 'Javascript CSS property'
+            },
+            // More target specifications...
        ]
     }
 
@@ -58,18 +56,18 @@ __HTML:__
 __JavaScript:__
 
     $('#parent-container').heightEqualiser({
-      "targets": [
-           {
-               "measureSelector": '#column1',
-               "adjustSelector": '#column1 ul.items .last',
-               "adjustProperty": 'paddingBottom'
-           },
-           {
-               "measureSelector": '#column2',
-               "adjustSelector": '#column2 .title',
-               "adjustProperty": 'marginBottom'
-           }
-       ]
+        "targets": [
+            {
+                "measureSelector": '#column1',
+                "adjustSelector": '#column1 ul.items .last',
+                "adjustProperty": 'paddingBottom'
+            },
+            {
+                "measureSelector": '#column2',
+                "adjustSelector": '#column2 .title',
+                "adjustProperty": 'marginBottom'
+            }
+        ]
     });
 
 This plugin works for as many containers as you like, i.e. you are not restricted to equalising the height of only two containers: Just specify more elements in the `targets` array.
