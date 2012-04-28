@@ -8,7 +8,7 @@
  * Documentation and usage available at https://github.com/chriscollins/height-equaliser
  */
 
-/*global jQuery*/
+/*global jQuery, console*/
 
 // Closure.
 (function ($) {
@@ -43,14 +43,36 @@
                     measureContainer = null;
 
                 $.each(options.targets, function (index, target) {
-                    var measureContainer = $this.find(target.measureSelector);
-                    if (measureContainer) {
-                        measureHeight = getIntegerValueFromCssProperty(measureContainer.css('height'));
-                        maxHeight = Math.max(measureHeight, maxHeight);
+                    measureContainer = $this.find(target.measureSelector);
+                    if (measureContainer.length > 0) {
+                        measureContainer.each(function () {
+                            measureHeight = getIntegerValueFromCssProperty($(this).css('height'));
+                            maxHeight = Math.max(measureHeight, maxHeight);
+                        });
+                    } else {
+                        //console.log('Measure container "' + target.measureSelector + '" was not found.');
                     }
                 });
+                //console.log('Maximum height is "' + maxHeight + 'px.');
 
                 return maxHeight;
+            }
+
+            /**
+             * Get the name of the CSS property to adjust for the target passed in.  Falls back to options.defaultAdjustProperty if not specified.
+             *
+             * @param  {Object} target The target to get the adjustProperty for.
+             *
+             * @return {string} The name of the CSS property to adjust for the target passed in.
+             */
+            function getAdjustProperty(target) {
+                var adjustProperty = options.defaultAdjustProperty;
+
+                if (target.adjustProperty !== undefined) {
+                    adjustProperty = target.adjustProperty;
+                }
+
+                return adjustProperty;
             }
 
             /**
@@ -63,19 +85,25 @@
                     difference = 0,
                     adjustContainer = null,
                     currentAdjustPropertyValue = 0,
-                    newValue = 0;
+                    newValue = 0,
+                    adjustProperty = '';
 
                 $.each(options.targets, function (index, target) {
                     measureContainer = $this.find(target.measureSelector);
-                    measureHeight = getIntegerValueFromCssProperty(measureContainer.css('height'));
-                    difference = maxHeight - measureHeight;
+                    if (measureContainer.length > 0) {
+                        measureContainer.each(function () {
+                            measureHeight = getIntegerValueFromCssProperty($(this).css('height'));
+                            difference = maxHeight - measureHeight;
 
-                    if (difference > 0) {
-                        adjustContainer = $this.find(target.adjustSelector);
-                        currentAdjustPropertyValue = getIntegerValueFromCssProperty(adjustContainer.css(target.adjustProperty));
-                        newValue = (currentAdjustPropertyValue + difference) + 'px';
-                        adjustContainer.css(target.adjustProperty, newValue);
-                        //console.log('Added "' + difference + 'px" of "' + target.adjustProperty + '" to "' + target.adjustSelector + '" (new value "' + newValue + '").');
+                            if (difference > 0) {
+                                adjustContainer = $this.find(target.adjustSelector);
+                                adjustProperty = getAdjustProperty(target);
+                                currentAdjustPropertyValue = getIntegerValueFromCssProperty(adjustContainer.css(adjustProperty));
+                                newValue = (currentAdjustPropertyValue + difference) + 'px';
+                                adjustContainer.css(adjustProperty, newValue);
+                                //console.log('Added "' + difference + 'px" of "' + adjustProperty + '" to "' + target.adjustSelector + '" (new value "' + newValue + '").');
+                            }
+                        });
                     }
                 });
             }
@@ -86,6 +114,7 @@
 
     // Plugin defaults.
     $.fn.heightEqualiser.defaults = {
+        "defaultAdjustProperty": 'height' // The CSS property to adjust by default.
     };
 
 // End closure.

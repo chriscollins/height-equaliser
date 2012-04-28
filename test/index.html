@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>QUnit Test Suite</title>
+        <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css">
+
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="http://code.jquery.com/qunit/git/qunit.js"></script>
+        <script src="../heightEqualiser.js"></script>
+        <script src="tests.js"></script>
+    </head>
+    <body>
+        <div id="qunit-content">
+            <h1 id="qunit-header">QUnit Test Suite</h1>
+            <h2 id="qunit-banner"></h2>
+            <div id="qunit-testrunner-toolbar"></div>
+            <h2 id="qunit-userAgent"></h2>
+            <ol id="qunit-tests"></ol>
+        </div>
+
+        <div id="test-content">
+            <div id="main">
+                <div class="column1">
+                    <ul class="items">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li class="last">Item 3</li>
+                    </ul>
+                </div>
+                <div class="column2">
+                    <h1 class="title">Title</h1>
+                </div>
+            </div>
+
+            <div id="with-initial-padding">
+                <div class="column1">
+                    <ul class="items">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li class="last" style="padding-bottom: 10px;">Item 3</li>
+                    </ul>
+                </div>
+                <div class="column2">
+                    <h1 class="title" style="padding-bottom: 45px;">Title</h1>
+                </div>
+            </div>
+
+            <div id="border-test">
+                <div class="column1">
+                    <ul class="items">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li class="last" style="border-bottom: 2px dotted #00f;">Item 3</li>
+                    </ul>
+                </div>
+                <div class="column2">
+                    <h1 class="title" style="border-bottom: 1px solid #f00;">Title</h1>
+                </div>
+            </div>
+
+            <div id="default-adjust-property-test">
+                <div class="column1">
+                    <ul class="items">
+                        <li>Item 1</li>
+                        <li>Item 2</li>
+                        <li class="last">Item 3</li>
+                    </ul>
+                </div>
+                <div class="column2">
+                    <h1 class="title">Title</h1>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+</html>
